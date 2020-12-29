@@ -17,9 +17,6 @@ env:
   # TODO: Change variable to your image's name.
   IMAGE_NAME: dev-workstation
 
-# Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init
 jobs:
   hadolint:
     name: 'Hadolint'
@@ -30,7 +27,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Hadolint
         run: docker run --rm ghcr.io/hadolint/hadolint < Dockerfile
   # Run tests.
