@@ -42,4 +42,6 @@ tfenv use latest
 
 COPY ./.bashrc /home/dev/.bashrc
 
+ADD run_tests.sh /home/dev/run_tests.sh
+
 ENTRYPOINT [ "/bin/bash" ]
