@@ -40,7 +40,6 @@ ln -s /home/dev/.tfenv/bin/* /home/dev/.local/bin && \
 tfenv install latest && \
 tfenv use latest
 
-RUN touch /home/dev/.bashrc && \
-echo "export PATH=$PATH:/home/dev/.local/bin">>/home/dev/.bashrc
+COPY ./.bashrc /home/dev/.bashrc
 
 ENTRYPOINT [ "/bin/bash" ]
