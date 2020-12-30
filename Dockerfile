@@ -1,9 +1,9 @@
-# hadolint ignore=DL3008
 FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
+# hadolint ignore=DL3008
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
         ca-certificates \
