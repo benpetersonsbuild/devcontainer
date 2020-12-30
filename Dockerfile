@@ -1,3 +1,4 @@
+# hadolint ignore=DL3008
 FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,8 +24,8 @@ RUN apt-get update \
 
 #awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-unzip awscliv2.zip && \
-sudo ./aws/install
+unzip awscliv2.zip && \ 
+./aws/install
 
 RUN useradd -ms /bin/bash dev
 
@@ -42,6 +43,6 @@ tfenv use latest
 
 COPY ./.bashrc /home/dev/.bashrc
 
-ADD run_tests.sh /home/dev/run_tests.sh
+COPY run_tests.sh /home/dev/run_tests.sh
 
 ENTRYPOINT [ "/bin/bash" ]
