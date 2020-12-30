@@ -23,7 +23,10 @@ RUN apt-get update \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
-#awscli
+# upgrade pip
+RUN python3 -m pip install --upgrade pip --no-cache-dir
+
+# awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
 unzip awscliv2.zip && \ 
 ./aws/install
