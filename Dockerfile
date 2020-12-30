@@ -35,7 +35,7 @@ USER dev
 
 WORKDIR /home/dev
 
-# tfenv
+# install tfenv
 RUN git clone https://github.com/tfutils/tfenv.git /home/dev/.tfenv && \
 mkdir -p /home/dev/.local/bin/ && \
 . /home/dev/.profile && \
