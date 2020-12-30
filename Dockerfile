@@ -24,6 +24,7 @@ apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
 # upgrade pip
+# hadolint ignore=DL3013
 RUN python3 -m pip install --upgrade pip --no-cache-dir
 
 # awscli
