@@ -18,7 +18,6 @@ RUN apt-get update \
         libssl1.0 \
         python3 \
         python3-pip \
-        sudo \
         unzip \
         ssh && \
 apt-get clean && \
@@ -35,7 +34,8 @@ USER dev
 
 WORKDIR /home/dev
 
-# tfenv
+# install tfenv
+# hadolint ignore=SC1091
 RUN git clone https://github.com/tfutils/tfenv.git /home/dev/.tfenv && \
 mkdir -p /home/dev/.local/bin/ && \
 . /home/dev/.profile && \

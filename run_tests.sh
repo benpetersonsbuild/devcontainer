@@ -1,5 +1,6 @@
+#!/bin/bash -e
 sleep 5
-# Test to check aws executable installed. Path needed for tfenv
+# Test to check aws executable installed. Path needed for tfenv.
 export PATH="$PATH:/home/dev/.local/bin"
 terraform --version
 if terraform --version | grep -q 'Terraform'; then
