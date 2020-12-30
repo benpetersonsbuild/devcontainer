@@ -18,18 +18,16 @@ env:
   IMAGE_NAME: dev-workstation
 
 jobs:
-  hadolint:
-    name: 'Hadolint'
-    runs-on: ubuntu-latest
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Hadolint
-        run: docker run --rm -i hadolint/hadolint < Dockerfile
+  superlinter:
+    name: 'Super-Linter'
+    author: 'GitHub'
+    description: 'It is a simple combination of various linters, written in bash, to help validate your source code.'
+    runs:
+      using: 'docker'
+      image: 'docker://ghcr.io/github/super-linter:v3'
+    branding:
+      icon: 'check-square'
+      color: 'white'
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
