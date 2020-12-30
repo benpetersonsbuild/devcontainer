@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
@@ -12,7 +12,6 @@ RUN apt-get update \
         git \
         iputils-ping \
         libcurl4 \
-        libicu60 \
         libunwind8 \
         netcat \
         libssl1.0 \
@@ -23,7 +22,11 @@ RUN apt-get update \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
-#awscli
+# upgrade pip
+# hadolint ignore=DL3013
+RUN python3 -m pip install --upgrade pip --no-cache-dir
+
+# awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
 unzip awscliv2.zip && \ 
 ./aws/install
