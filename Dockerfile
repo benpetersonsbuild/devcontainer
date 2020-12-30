@@ -18,7 +18,6 @@ RUN apt-get update \
         libssl1.0 \
         python3 \
         python3-pip \
-        sudo \
         unzip \
         ssh && \
 apt-get clean && \
@@ -43,6 +42,7 @@ ln -s /home/dev/.tfenv/bin/* /home/dev/.local/bin && \
 tfenv install latest && \
 tfenv use latest
 
+# hadolint ignore=SC1091
 COPY ./.bashrc /home/dev/.bashrc
 
 COPY run_tests.sh /home/dev/run_tests.sh
