@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
+# hadolint ignore=DL3008
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -19,12 +20,14 @@ RUN apt-get update \
         python3-pip \
         sudo \
         unzip \
-        ssh
+        ssh && \
+apt-get clean && \
+rm -rf /var/lib/apt/lists/*
 
 #awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-unzip awscliv2.zip && \
-sudo ./aws/install
+unzip awscliv2.zip && \ 
+./aws/install
 
 RUN useradd -ms /bin/bash dev
 
@@ -41,5 +44,7 @@ tfenv install latest && \
 tfenv use latest
 
 COPY ./.bashrc /home/dev/.bashrc
+
+COPY run_tests.sh /home/dev/run_tests.sh
 
 ENTRYPOINT [ "/bin/bash" ]
