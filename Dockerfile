@@ -20,7 +20,9 @@ RUN apt-get update \
         python3-pip \
         sudo \
         unzip \
-        ssh
+        ssh && \
+apt-get clean && \
+rm -rf /var/lib/apt/lists/*
 
 #awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
