@@ -35,6 +35,7 @@ USER dev
 WORKDIR /home/dev
 
 # install tfenv
+# hadolint ignore=SC1091
 RUN git clone https://github.com/tfutils/tfenv.git /home/dev/.tfenv && \
 mkdir -p /home/dev/.local/bin/ && \
 . /home/dev/.profile && \
@@ -42,7 +43,6 @@ ln -s /home/dev/.tfenv/bin/* /home/dev/.local/bin && \
 tfenv install latest && \
 tfenv use latest
 
-# hadolint ignore=SC1091
 COPY ./.bashrc /home/dev/.bashrc
 
 COPY run_tests.sh /home/dev/run_tests.sh
