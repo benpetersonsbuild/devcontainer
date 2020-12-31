@@ -29,7 +29,6 @@ fi
 python3 -m pip --version
 if python3 -m pip --version | grep -q 'pip'; then
   echo "Pip tests passed!"
-  exit 0
 else
   echo "Pip tests failed!"
   exit 1
