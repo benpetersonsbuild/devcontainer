@@ -34,10 +34,19 @@ else
   exit 1
 fi
 # Test to check nvm is installed
-nvm --version
-if nvm --version | grep -q 'pip'; then
-  echo "Node version manager tests passed!"
+npm -v
+if npm --version | grep -q '6.'; then
+  echo "Node package manager tests passed!"
 else
   echo "Node version manager tests failed!"
+  exit 1
+fi
+# Test to check node is installed
+node -v
+if node --version | grep -q 'v12'; then
+  echo "Node tests passed!"
+  exit 0
+else
+  echo "Node tests failed!"
   exit 1
 fi
