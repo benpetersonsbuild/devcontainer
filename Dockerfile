@@ -27,6 +27,7 @@ rm -rf /var/lib/apt/lists/*
 RUN python3 -m pip install --upgrade pip --no-cache-dir
 
 # install node version manager
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 # awscli
