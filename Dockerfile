@@ -26,6 +26,9 @@ rm -rf /var/lib/apt/lists/*
 # hadolint ignore=DL3013
 RUN python3 -m pip install --upgrade pip --no-cache-dir
 
+# install node version manager
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
 # awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
 unzip awscliv2.zip && \ 
