@@ -45,8 +45,16 @@ fi
 node -v
 if node --version | grep -q 'v12'; then
   echo "Node tests passed!"
-  exit 0
 else
   echo "Node tests failed!"
+  exit 1
+fi
+# Test to check gatsby cli is installed
+gatsby -v
+if gatsby --help | grep -q 'Gatsby'; then
+  echo "Gatsby cli tests passed!"
+  exit 0
+else
+  echo "Gatsby cli tests failed!"
   exit 1
 fi
