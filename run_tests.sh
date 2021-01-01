@@ -50,7 +50,7 @@ else
   exit 1
 fi
 # Test to check gatsby cli is installed
-gatsby --help
+gatsby -v
 if gatsby --help | grep -q 'Gatsby'; then
   echo "Gatsby cli tests passed!"
   exit 0
