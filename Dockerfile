@@ -53,6 +53,9 @@ RUN npm -v
 # add gatsby cli
 RUN npm install -g gatsby-cli@latest
 
+# add surge
+RUN npm install -g surge@latest
+
 # awscli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
 unzip awscliv2.zip && \ 
